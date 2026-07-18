@@ -1,0 +1,243 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =========================
+THEME VARIABLES
+========================= */
+@layer base {
+:root {
+--background: 210 40% 98%;
+--foreground: 222 47% 11%;
+--card: 0 0% 100%;
+--card-foreground: 222 47% 11%;
+--popover: 0 0% 100%;
+--popover-foreground: 222 47% 11%;
+--primary: 189 94% 43%;
+--primary-foreground: 0 0% 100%;
+--secondary: 210 40% 96%;
+--secondary-foreground: 222 47% 11%;
+--muted: 210 40% 94%;
+--muted-foreground: 215 16% 47%;
+--accent: 199 89% 48%;
+--accent-foreground: 0 0% 100%;
+--destructive: 0 72% 51%;
+--destructive-foreground: 0 0% 98%;
+--border: 214 32% 91%;
+--input: 214 32% 91%;
+--ring: 189 94% 43%;
+--radius: 0.75rem;
+}
+
+.dark {
+--background: 222 47% 5%;
+--foreground: 210 40% 96%;
+--card: 222 45% 7%;
+--card-foreground: 210 40% 96%;
+--popover: 222 45% 7%;
+--popover-foreground: 210 40% 96%;
+--primary: 189 94% 55%;
+--primary-foreground: 222 47% 5%;
+--secondary: 222 45% 10%;
+--secondary-foreground: 210 40% 96%;
+--muted: 222 40% 12%;
+--muted-foreground: 215 20% 55%;
+--accent: 199 89% 52%;
+--accent-foreground: 222 47% 5%;
+--destructive: 0 72% 50%;
+--destructive-foreground: 0 0% 98%;
+--border: 222 35% 15%;
+--input: 222 35% 15%;
+--ring: 189 94% 55%;
+}
+
+* {
+  @apply border-border;
+  }
+
+html {
+scroll-behavior: smooth;
+}
+
+body {
+@apply bg-background text-foreground antialiased;
+font-family: var(--font-inter), sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+font-family: var(--font-poppins), sans-serif;
+@apply font-semibold tracking-tight;
+}
+}
+
+/* =========================
+COMPONENTS
+========================= */
+@layer components {
+
+/* Glass */
+.glass {
+@apply bg-secondary-900/60 backdrop-blur-xl border;
+border-color: hsl(var(--primary) / 0.1);
+}
+
+.dark .glass {
+@apply bg-secondary-900/60 backdrop-blur-xl border;
+border-color: hsl(var(--primary) / 0.1);
+}
+
+.light .glass {
+@apply bg-white/80 backdrop-blur-xl border border-slate-200;
+}
+
+.glass-card {
+@apply bg-card border border-border rounded-2xl shadow-soft;
+}
+
+.dark .glass-card {
+@apply bg-secondary-900/50 backdrop-blur-lg border rounded-2xl shadow-soft;
+border-color: hsl(var(--primary) / 0.1);
+}
+
+.glass-card-dark {
+@apply bg-card border border-border rounded-2xl;
+}
+
+.dark .glass-card-dark {
+@apply bg-secondary-950/80 backdrop-blur-lg border rounded-2xl;
+border-color: hsl(var(--primary) / 0.1);
+}
+
+/* Text Gradients */
+.gradient-text {
+@apply bg-gradient-to-r from-cyan-600 via-sky-600 to-blue-700 bg-clip-text text-transparent;
+}
+
+.dark .gradient-text {
+@apply bg-gradient-to-r from-cyan-400 via-sky-400 to-blue-500 bg-clip-text text-transparent;
+}
+
+.gradient-text-accent {
+@apply bg-gradient-to-r from-emerald-600 to-cyan-600 bg-clip-text text-transparent;
+}
+
+.dark .gradient-text-accent {
+@apply bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent;
+}
+
+/* Effects */
+.hover-lift {
+@apply transition-all duration-300 hover:-translate-y-1 hover:shadow-soft-lg;
+}
+
+.hover-lift:hover {
+border-color: hsl(var(--primary) / 0.3);
+}
+
+.hover-scale {
+@apply transition-transform duration-300 hover:scale-[1.02];
+}
+
+/* Buttons */
+.btn-primary {
+@apply bg-primary text-primary-foreground font-semibold px-6 py-3 rounded-xl shadow-glow hover:opacity-90 transition-all duration-300;
+}
+
+.btn-secondary {
+@apply bg-secondary text-secondary-foreground font-semibold px-6 py-3 rounded-xl shadow-soft hover:opacity-80 transition-all duration-300;
+}
+
+.btn-outline {
+@apply border-2 text-primary font-semibold px-6 py-3 rounded-xl transition-all duration-300;
+border-color: hsl(var(--primary) / 0.5);
+}
+
+.btn-outline:hover {
+@apply bg-primary text-primary-foreground;
+border-color: hsl(var(--primary));
+}
+
+.btn-ghost {
+@apply font-semibold px-6 py-3 rounded-xl hover:bg-secondary transition-all duration-300;
+}
+
+/* Layout */
+.section-padding {
+@apply py-16 md:py-24 lg:py-32;
+}
+
+.container-custom {
+@apply container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl;
+}
+
+/* Misc */
+.grid-bg {
+background-image:
+linear-gradient(rgba(6, 182, 212, 0.04) 1px, transparent 1px),
+linear-gradient(90deg, rgba(6, 182, 212, 0.04) 1px, transparent 1px);
+background-size: 40px 40px;
+}
+
+.dark .grid-bg {
+background-image:
+linear-gradient(rgba(6, 182, 212, 0.05) 1px, transparent 1px),
+linear-gradient(90deg, rgba(6, 182, 212, 0.05) 1px, transparent 1px);
+}
+
+.dot-bg {
+background-image: radial-gradient(circle, rgba(6, 182, 212, 0.06) 1px, transparent 1px);
+background-size: 24px 24px;
+}
+
+.dark .dot-bg {
+background-image: radial-gradient(circle, rgba(6, 182, 212, 0.08) 1px, transparent 1px);
+}
+
+.terminal-border {
+@apply border border-border;
+}
+
+.dark .terminal-border {
+border: 1px solid rgba(6, 182, 212, 0.2);
+}
+}
+
+/* =========================
+UTILITIES
+========================= */
+@layer utilities {
+.text-shadow-glow {
+text-shadow: 0 0 30px rgba(6, 182, 212, 0.3);
+}
+}
+
+/* =========================
+SCROLLBAR
+========================= */
+::-webkit-scrollbar {
+width: 8px;
+}
+
+::-webkit-scrollbar-track {
+background: hsl(var(--background));
+}
+
+::-webkit-scrollbar-thumb {
+background: hsl(var(--primary) / 0.3);
+border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+background: hsl(var(--primary) / 0.5);
+}
+
+/* Selection */
+::selection {
+background: hsl(var(--primary) / 0.25);
+color: hsl(var(--primary));
+}
+
+/* Focus */
+:focus-visible {
+@apply outline-none ring-2 ring-primary ring-offset-2 ring-offset-background;
+}
