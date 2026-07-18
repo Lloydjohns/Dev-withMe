@@ -1,10 +1,8 @@
-export const dynamic = "force-dynamic";
 "use client";
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { supabase } from "@/lib/supabase";
 import {
   Calendar,
   Clock,
@@ -53,6 +51,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { supabase } from "@/lib/supabase";
 
 const services = [
   { id: "social-media", label: "Social Media Management", icon: BarChart3, description: "Content strategy, posting, and community management" },
